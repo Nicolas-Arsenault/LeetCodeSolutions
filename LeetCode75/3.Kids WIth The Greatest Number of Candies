@@ -1,0 +1,32 @@
+C# Solution.
+Basically, it uses a temp var to get the new val of the candies after adding the extra.
+After, it compares that value with all of them of the list.
+Then it adds the result in the bool List and returns it after looping through all of the items.
+```
+public class Solution 
+{
+    public IList<bool> KidsWithCandies(int[] candies, int extraCandies) 
+    {
+        List<bool> results = new List<bool>();
+        bool isGreatest = false;
+
+        for(int i = 0; i < candies.Length; i ++)
+        {
+            int temp = candies[i] + extraCandies; //Returns the current candies with extra
+            isGreatest = true; //assume it is the greatest
+
+            foreach(int candie in candies)
+            {
+                if(temp < candie)
+                {
+                    isGreatest = false;
+                }
+            }
+
+            results.Add(isGreatest);
+        }
+
+        return results;
+    }
+}
+```
