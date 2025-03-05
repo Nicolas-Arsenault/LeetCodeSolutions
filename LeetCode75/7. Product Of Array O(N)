@@ -1,0 +1,29 @@
+C# solution.
+Read code to understand.
+Complexity needed to be O(N)
+
+public class Solution
+{
+    public int[] ProductExceptSelf(int[] nums)
+    {
+        int n = nums.Length;
+        int[] result = new int[n];
+
+        //Calculate all products of the array BEFORE the index of each element
+        result[0] = 1;  // No left product for the first element.
+        for (int i = 1; i < n; i++)
+        {
+            result[i] = result[i - 1] * nums[i - 1]; 
+        }
+
+        //Calculate all products of the array AFTER the index of each element
+        int rightProduct = 1;  // No right product for the last element.
+        for (int i = n - 2; i >= 0; i--)
+        {
+            rightProduct *= nums[i + 1];
+            result[i] *= rightProduct; //multiply the BEFORE and AFTER, so that it excludes the current index in multiplication
+        }
+
+        return result; 
+    }
+}
