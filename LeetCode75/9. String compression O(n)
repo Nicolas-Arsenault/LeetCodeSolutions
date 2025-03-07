@@ -1,0 +1,43 @@
+C# solution.
+
+We go through the whole char array and we extract the character. Then we loop to count the number of occurences this character has.
+Then we reconstruct the chars var with the compressed result
+
+```
+public class Solution
+{
+    public int Compress(char[] chars)
+    {
+        int writeIndex = 0; // This will keep track of where to write in the array
+        int readIndex = 0;  // This will iterate through the original array
+        int n = chars.Length;
+
+        while (readIndex < n)
+        {
+            char currentChar = chars[readIndex];
+            int count = 0;
+
+            // Count the number of times the current character repeats
+            while (readIndex < n && chars[readIndex] == currentChar)
+            {
+                readIndex++;
+                count++;
+            }
+
+            // Write the character to the array
+            chars[writeIndex++] = currentChar;
+
+            // If the character repeats more than once, write the count
+            if (count > 1)
+            {
+                foreach (var digit in count.ToString())
+                {
+                    chars[writeIndex++] = digit;
+                }
+            }
+        }
+
+        return writeIndex; // The new length of the compressed array
+    }
+}
+```
