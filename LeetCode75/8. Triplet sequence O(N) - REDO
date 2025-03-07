@@ -1,0 +1,37 @@
+C# solution
+
+Loops in the whole array, extracting each value (foreach).
+Then it compares these values to get 1. the smallest. 2. the smallest number greater than the smalest.
+Then if none are smaller than the second smallest amd smallest, it means one is greater than both, which means a triplet is valid.
+
+```
+public class Solution
+{
+    public bool IncreasingTriplet(int[] nums)
+    {
+        int first = int.MaxValue;
+        int second = int.MaxValue;
+
+        foreach (int num in nums)
+        {
+            if (num <= first)
+            {
+                // Update 'first' to the smallest number
+                first = num;
+            }
+            else if (num <= second)
+            {
+                // Update 'second' to the smallest number greater than 'first'
+                second = num;
+            }
+            else
+            {
+                // If we find a number greater than 'second', return true
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+```
