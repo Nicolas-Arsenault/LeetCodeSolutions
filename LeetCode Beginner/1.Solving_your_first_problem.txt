@@ -1,0 +1,2 @@
+1. After solving a problem, check other solutions.
+2. Read the code and approach and try to implement that solution.
