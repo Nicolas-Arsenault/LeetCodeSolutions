@@ -16,3 +16,21 @@ public class Solution
         return false;
     }
 }
+
+Another way of doing this would be by sorting the whole array then comparing the next value:
+
+C# solution:
+
+```
+public class Solution {
+    public bool HasDuplicate(int[] nums) {
+        Array.Sort(nums);
+        for (int i = 1; i < nums.Length; i++) {
+            if (nums[i] == nums[i - 1]) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+```
