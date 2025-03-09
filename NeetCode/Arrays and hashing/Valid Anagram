@@ -1,0 +1,28 @@
+C# most optimal solution...
+Count the number of occurences of each letters using an array.
+
+public class Solution 
+{
+    public bool IsAnagram(string s, string t) 
+    {
+        if(s.Length != t.Length) return false;
+
+        int[] count = new int[26]; //alphabet
+
+        for(int i = 0; i < s.Length; i ++) //go through the whole length of both strings
+        {
+            //if the letter is present, count the number of times it appears in s and t...
+            //if they appear the same amount of times, it will be 0 at the sepcified index.
+            count[s[i] - 'a'] ++;
+            count[t[i] - 'a'] --; 
+
+        }
+
+        foreach(int val in count)
+        {
+            if(val != 0) return false;
+        }
+        return true;
+    }
+}
+
