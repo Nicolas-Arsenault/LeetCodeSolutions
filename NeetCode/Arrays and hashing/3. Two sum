@@ -1,0 +1,26 @@
+public class Solution 
+{
+    public int[] TwoSum(int[] nums, int target) 
+    {
+        Dictionary<int,int> dict = new Dictionary<int,int>();
+        int[] returningValue = new int[2];
+
+        //put values in the dict
+        for(int i = 0; i < nums.Length; i ++)
+        {
+            
+            dict[nums[i]] = i; //forces to add in dict
+            
+        }        
+
+        for(int i = 0; i < nums.Length; i ++)
+        {
+            int diff = target - nums[i];
+            if(dict.ContainsKey(diff) && dict[diff] != i) //Cannot use the same one twice
+            {
+                return new int[]{i, dict[diff]};
+            }
+        }
+        return new int[0];
+    }
+}
